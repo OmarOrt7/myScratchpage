@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch Page</title>
+    <link rel="stylesheet" href="scratch.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="sticky-nav">
+        <a href="index.html" class="nav-link" data-section="home">Home</a>
+        <a href="#hobbies" class="nav-link" data-section="hobbies">Hobbies</a>
+        <a href="#video" class="nav-link" data-section="video">Inspirational Video</a>
+        <a href="#graph" class="nav-link" data-section="graph">Interactive Graph</a>
+        <a href="#game" class="nav-link" data-section="game">Number Guessing Game</a>
+    </nav>
+
+    <!-- Header -->
+    <header id="home">
+        <h1>Welcome to My Scratch Page</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hobbies Section -->
+        <section id="hobbies">
+            <h2>Some of my hobbies are...</h2>
+            <div class="hobbies-container">
+                <div class="hobby">
+                    <h3>Playing Soccer</h3>
+                    <img src="CR7.jpg" alt="Cristiano Ronaldo Playing Soccer">
+                </div>
+                <div class="hobby">
+                    <h3>Creative Writing</h3>
+                    <img src="writing.jpg" alt="Writing Image">
+                </div>
+                <div class="hobby">
+                    <h3>Playing League of Legends</h3>
+                    <img src="platino.jpg" alt="League of Legends Platino Rank">
+                </div>
+            </div>
+        </section>
+
+        <!-- YouTube Video Section -->
+        <section id="video">
+            <h2>Inspirational Video (this video makes me cry)</h2>
+            <iframe 
+                width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/tgbNymZ7vqY" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </section>
+
+        <!-- Tableau Graph Section -->
+        <section id="graph">
+            <h2>Interactive Graph</h2>
+            <div class='tableauPlaceholder' id='viz1734557173879' style='position: relative'>
+                <noscript>
+                    <a href='#'>
+                        <img alt='Dashboard 1' src='https://public.tableau.com/static/images/GD/GDPClimateChange/Dashboard1/1_rss.png' style='border: none' />
+                    </a>
+                </noscript>
+                <object class='tableauViz' style='display:none;'>
+                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                    <param name='embed_code_version' value='3' />
+                    <param name='site_root' value='' />
+                    <param name='name' value='GDPClimateChange/Dashboard1' />
+                    <param name='tabs' value='no' />
+                    <param name='toolbar' value='yes' />
+                    <param name='static_image' value='https://public.tableau.com/static/images/GD/GDPClimateChange/Dashboard1/1.png' />
+                    <param name='animate_transition' value='yes' />
+                    <param name='display_static_image' value='yes' />
+                    <param name='display_spinner' value='yes' />
+                    <param name='display_overlay' value='yes' />
+                    <param name='display_count' value='yes' />
+                    <param name='language' value='en-GB' />
+                </object>
+            </div>
+            <script type='text/javascript'>
+                var divElement = document.getElementById('viz1734557173879');
+                var vizElement = divElement.getElementsByTagName('object')[0];
+                if (divElement.offsetWidth > 800) { 
+                    vizElement.style.width = '100%';
+                    vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+                } else if (divElement.offsetWidth > 500) { 
+                    vizElement.style.width = '100%';
+                    vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+                } else { 
+                    vizElement.style.width = '100%';
+                    vizElement.style.height = '794px';
+                } 
+                var scriptElement = document.createElement('script');
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);
+            </script>
+        </section>
+
+        <!-- Number Guessing Game Section -->
+        <section id="game">
+            <h2>Number Guessing Game</h2>
+            <p>I'm thinking of a number between 1 and 10. Can you guess what it is?</p>
+            <input type="number" id="userGuess" placeholder="Enter your guess" min="1" max="10">
+            <button onclick="checkGuess()">Guess</button>
+            <p id="feedback"></p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Omar Ortiz</p>
+    </footer>
+
+    <!-- JavaScript for Guessing Game -->
+    <script>
+        const randomNumber = Math.floor(Math.random() * 10) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const userGuess = document.getElementById("userGuess").value;
+            const feedback = document.getElementById("feedback");
+
+            if (userGuess < 1 || userGuess > 10) {
+                feedback.textContent = "Please enter a number between 1 and 10!";
+                return;
+            }
+
+            attempts++;
+            if (userGuess == randomNumber) {
+                feedback.textContent = `Congratulations! You guessed it in ${attempts} attempts. 🎉`;
+            } else if (userGuess < randomNumber) {
+                feedback.textContent = "Too low! Try again.";
+            } else {
+                feedback.textContent = "Too high! Try again.";
+            }
+        }
+    </script>
+</body>
+</html>
